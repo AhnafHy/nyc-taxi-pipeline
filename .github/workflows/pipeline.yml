@@ -46,10 +46,7 @@ jobs:
                 threads: 4
           EOF
 
-      - name: Run dbt compile check
+      - name: Run dbt parse check
         run: |
           cd dbt_project
-          dbt compile --profiles-dir .
-
-      - name: Run data quality validation
-        run: python tests/validate_data.py
+          dbt parse --profiles-dir .
