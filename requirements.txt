@@ -1,0 +1,9 @@
+apache-airflow==2.8.1
+apache-airflow-providers-snowflake
+dbt-snowflake
+great-expectations==0.18.8
+snowflake-connector-python
+snowflake-sqlalchemy
+pandas
+pyarrow
+requests
