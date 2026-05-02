@@ -27,6 +27,25 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Create profiles.yml
+        run: |
+          mkdir -p dbt_project
+          cat > dbt_project/profiles.yml << EOF
+          nyc_taxi:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+                user: ${{ secrets.SNOWFLAKE_USER }}
+                password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                role: ACCOUNTADMIN
+                database: NYC_TAXI
+                warehouse: TAXI_WH
+                schema: PUBLIC
+                threads: 4
+          EOF
+
       - name: Run dbt compile check
         run: |
           cd dbt_project
