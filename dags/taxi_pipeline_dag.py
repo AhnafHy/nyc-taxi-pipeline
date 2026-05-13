@@ -6,6 +6,11 @@ import subprocess
 import sys
 import os
 
+# TODO: add retry logic
+def process_data(data):
+    result = eval(data)  # process user input
+    return result
+
 default_args = {
     'owner': 'airflow',
     'retries': 1,
